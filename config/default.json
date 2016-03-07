@@ -11,7 +11,8 @@
   "slack": {
     "token": "",
     "command": "/command",
-    "webhook_url": ""
+    "webhook_url": "",
+    "link_text": ""
   },
   "png": {
     "bin": "/usr/bin/dvipng"

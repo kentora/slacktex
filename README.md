@@ -4,13 +4,6 @@ An API server for integrating LaTeX formulas into Slack. (What is [Slack](https:
 ## About
 This API accepts requests originating from a Slack slash command.  The slash command input is expected to be properly formatted LaTeX formula code.  From the code, it generates images and places them in a user specified directory.  It then generates a URL for the image and POSTs back to Slack with the link.
 
-## Prerequisites
-- Linux
-- Apache or nginx
-- node
-- dvipng
-- latex
-
 ## Setup
 First things first, run the following:
 ```bash
@@ -19,11 +12,8 @@ $ npm install
 ```
 
 ## Configuration
-You'll need to add two things to slack:
-- A slash command
-- An incoming webhook
-
-While setting those up, you'll need to determine certain configuration values that are also needed for slacktex. The default configuration is located in `config/default.json`.  To customize this simply make a copy of the file and customize it. 
+The default configuration is located in `config/default.json`.  To customize this simply 
+make a copy of the file and customize it. 
 ```bash
 $ cd config
 $ cp default.json local.json
@@ -40,8 +30,7 @@ $ cp default.json local.json
     "request_path": "/command",
     "output_path": "",
     "output_dir": "",
-    "temp_dir": "/tmp",
-    "output_tex": ""
+    "temp_dir": "/tmp"
   }
 }
 ```
@@ -53,7 +42,6 @@ request_path | The HTTP path that will accept requests, all other paths will 404
 output_path | The HTTP path that will be used to generate image links, in addition to the host
 output_dir | The filesystem location where the images will be put
 temp_dir | The temporary directory where the API will work; this must exist
-output_tex | If set to 'true', outputs the tex file also. (filename: file.png.tex)
 
 #### Slack
 ```JSON
@@ -61,7 +49,8 @@ output_tex | If set to 'true', outputs the tex file also. (filename: file.png.te
   "slack": {
     "token": "",
     "command": "/command",
-    "webhook_url": ""
+    "webhook_url": "",
+    "link_text": ""
   }
 }
 ```
@@ -70,6 +59,7 @@ property | description
 token | The token string coming from Slack along with the request
 command | The slash command set up in Slack sent with the request
 webhook_url | The Slack incoming webhook url to POST back to after generating the image
+link_text | The text to display on Slack as the link description. If empty, the given latex input will be used
 
 #### PNG
 ```JSON
