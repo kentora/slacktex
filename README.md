@@ -30,7 +30,8 @@ $ cp default.json local.json
     "request_path": "/command",
     "output_path": "",
     "output_dir": "",
-    "temp_dir": "/tmp"
+    "temp_dir": "/tmp",
+    "output_tex": ""
   }
 }
 ```
@@ -42,6 +43,7 @@ request_path | The HTTP path that will accept requests, all other paths will 404
 output_path | The HTTP path that will be used to generate image links, in addition to the host
 output_dir | The filesystem location where the images will be put
 temp_dir | The temporary directory where the API will work; this must exist
+output_tex | If set to 'true', outputs the tex file also. (filename: file.png.tex)
 
 #### Slack
 ```JSON
