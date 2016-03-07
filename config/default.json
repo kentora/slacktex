@@ -5,7 +5,8 @@
     "request_path": "/command",
     "output_path": "",
     "output_dir": "",
-    "temp_dir": "/tmp"
+    "temp_dir": "/tmp",
+    "output_tex": ""
   },
   "slack": {
     "token": "",
